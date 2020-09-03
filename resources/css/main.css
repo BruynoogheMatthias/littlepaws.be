@@ -13,8 +13,9 @@ nav .nav-extended{
     height: 64px;
 }
 nav .nav-wrapper, nav .nav-content {
-   
-   padding-left: 10px}
+   display: inline-block;
+   padding-left: 10px;
+}
 
 
 nav .brand-logo{
