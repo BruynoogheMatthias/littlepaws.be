@@ -4,12 +4,11 @@ $(document).ready(() => {
     $('a[href^="#"]').not('a[href="#"]').click(
 
         (e) => {
-            e.preventBubbling
-            console.log(e.target)
+            console.log($(e.target).closest('a[href^="#"]'))
             $('section').removeClass('active')
             $('nav ul a').removeClass('active')
-            $('a[href^="'+$(e.target).attr('href')+'"]').addClass('active')
-            $($(e.target).attr("href")).addClass('active')
+            $('a[href^="'+$(e.target).closest('a[href^="#"]').attr('href')+'"]').addClass('active')
+            $($(e.target).closest('a[href^="#"]').attr("href")).addClass('active')
             M.Sidenav.getInstance($(".sidenav")).close()
         })
 
