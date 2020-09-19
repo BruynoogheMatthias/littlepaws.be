@@ -4,7 +4,7 @@ $(document).ready(() => {
     $('a[href^="#"]').not('a[href="#"]').click(
 
         (e) => {
-            console.log($(e.target).closest('a[href^="#"]'))
+         
             $('section').removeClass('active')
             $('nav ul a').removeClass('active')
             $('a[href^="' + $(e.target).closest('a[href^="#"]').attr('href') + '"]').addClass('active')
@@ -20,10 +20,15 @@ const initPage = () => {
 
     let location = window.location.href
     try {
-        location = '#' + location.split('#')[1]
+       
+        if (location.split("#")[1] == 'undefined') {
+            location = "#" + location.split("#")[1]
+        } else {
+            location = "#home"
+        }
     } catch (error) {
         location = '#home'
     }
-
-    $('a[href="'+location+'"]').trigger('click')
+    console.log("opening on " + location)
+    $('a[href="' + location + '"]').trigger('click')
 }
