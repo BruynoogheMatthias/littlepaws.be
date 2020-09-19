@@ -22,7 +22,12 @@ jobs:
         
       - uses: montudor/action-zip@v0.1.0
         with:
-          args: zip -qq -r release.zip ./
+          args: zip -qq -r ./release.zip ./
+      
+      - uses: actions/upload-artifact@v2
+        with:
+          name: release.zip
+          path: ./release.zip # or path/to/artifact
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
