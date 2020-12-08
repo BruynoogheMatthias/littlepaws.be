@@ -19,13 +19,17 @@ $(document).ready(() => {
 const initPage = () => {
 
     let location = window.location.href
+    console.log(location)
     try {
        
-        if (location.split("#")[1] == 'undefined') {
+        if (location.split("#")[1] != null) {
             location = "#" + location.split("#")[1]
+            console.log('found '+location)
         } else {
             location = "#home"
+            console.log('defaulting to Home')
         }
+        
     } catch (error) {
         location = '#home'
     }

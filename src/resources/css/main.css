@@ -2,6 +2,13 @@
     --main-bg-color: #101820
 }
 
+h1{
+    font-size: 5rem;
+}
+h2{
+    font-size: 3rem;
+}
+
 
 .logo-holder{
 
@@ -41,4 +48,11 @@ section.active{
 
 .dark-Background{
     background-color: var(--main-bg-color);
+}
+
+section{
+margin-left: 50px;
+/*margin-top: 90px;*/
+margin-right: 50px;
+margin-bottom: 50px;
 }
