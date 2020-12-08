@@ -17,14 +17,16 @@ $(document).ready(() => {
 })
 
 window.onpopstate = function(event){
-    initPage()
+    initPage();
+    return false
+    
 }
 
 const initPage = () => {
-
     fixLocation()
-    window.setTimeout(()=>{window.scrollTo(0,0)}, 0)
 }
+
+
 const fixLocation = ()=>{
     let location = window.location.href
     console.log(location)
@@ -43,5 +45,5 @@ const fixLocation = ()=>{
     }
     console.log("opening on " + location)
     $('a[href="' + location + '"]').trigger('click');
-    window.setTimeout(()=>{window.scrollTo(0,0)}, 0)
+    $('html,body').animate({ scrollTop: 0 }, 'slow');
 }

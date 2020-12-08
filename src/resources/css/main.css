@@ -5,6 +5,10 @@
 h1{
     font-size: 5rem;
 }
+
+h1:first-of-type{
+margin-top: 10px;
+}
 h2{
     font-size: 3rem;
 }
