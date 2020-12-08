@@ -22,8 +22,37 @@ jobs:
         
       - uses: montudor/action-zip@v0.1.0
         with:
-          args: zip -qq -r release.zip ./
+          args: zip -qq -r ./release.zip src
+      
+      - uses: actions/upload-artifact@v2
+        with:
+          name: release.zip
+          path: ./release.zip # or path/to/artifact
 
+      - name: test run id
+        run: echo ${{ github.run_id }}
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+        with:
+          tag_name: ${{ github.run_id }}
+          release_name: Release ${{ github.run_id }}
+          draft: false
+          prerelease: false
+
+      - name: Upload Release Asset
+        id: upload-release-asset 
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+          asset_path: ./release.zip
+          asset_name: release.zip
+          asset_content_type: application/zip
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, world!
