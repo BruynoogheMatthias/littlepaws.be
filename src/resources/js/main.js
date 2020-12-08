@@ -16,6 +16,10 @@ $(document).ready(() => {
 
 })
 
+window.onpopstate = function(event){
+    initPage()
+}
+
 const initPage = () => {
 
     let location = window.location.href
