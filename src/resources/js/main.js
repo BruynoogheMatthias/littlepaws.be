@@ -22,6 +22,10 @@ window.onpopstate = function(event){
 
 const initPage = () => {
 
+    fixLocation()
+    window.setTimeout(()=>{window.scrollTo(0,0)}, 0)
+}
+const fixLocation = ()=>{
     let location = window.location.href
     console.log(location)
     try {
@@ -38,5 +42,6 @@ const initPage = () => {
         location = '#home'
     }
     console.log("opening on " + location)
-    $('a[href="' + location + '"]').trigger('click')
+    $('a[href="' + location + '"]').trigger('click');
+    window.setTimeout(()=>{window.scrollTo(0,0)}, 0)
 }
